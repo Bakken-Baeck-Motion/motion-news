@@ -40,18 +40,7 @@
     border-bottom: 1px solid var(--line);
   }
   @media (max-width: 640px) { .mark-row { padding: 20px; } }
-  .mark {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: 1.5px solid var(--ink);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
+  .mark svg { display: block; height: 16px; width: auto; }
   .mark-row .meta {
     font-size: 12px;
     color: var(--muted);
@@ -151,17 +140,32 @@
   .item-body { color: var(--ink); }
   .quiet { color: var(--muted); font-style: normal; }
 
+  /* journal-card style for items with images: date/tag band, flush image, title, caption below */
+  .card { margin: 0; }
+  .card-band {
+    background: var(--band);
+    color: #55524c;
+    font-size: 13px;
+    padding: 12px 16px;
+  }
   img.shot {
     display: block;
     width: 100%;
-    max-width: 560px;
-    border-radius: 2px;
-    margin: 14px 0;
+    margin: 0;
+    border-radius: 0;
+  }
+  .card-title {
+    font-weight: 700;
+    margin-top: 14px;
+  }
+  .card-body {
+    color: var(--muted);
+    margin-top: 4px;
   }
 
   a.src {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -200,7 +204,11 @@
 <body>
 
 <div class="mark-row">
-  <div class="mark">MN</div>
+  <div class="mark">
+    <svg viewBox="0 0 1000 354" xmlns="http://www.w3.org/2000/svg">
+      <path d="M736.761 354C686.59 354 641.788 346.457 602.354 331.371C563.126 316.285 532.466 295.31 510.375 268.445C488.283 241.58 477.134 211.098 476.928 177C477.134 142.902 488.283 112.42 510.375 85.5552C532.466 58.69 563.126 37.7145 602.354 22.6287C641.788 7.54291 686.59 0 736.761 0C787.55 0 832.869 7.54291 872.716 22.6287C912.77 37.7145 943.945 58.69 966.243 85.5552C988.748 112.42 1000 142.902 1000 177C1000 211.098 988.851 241.58 966.553 268.445C944.255 295.31 913.079 316.285 873.026 331.371C832.972 346.457 787.55 354 736.761 354ZM263.549 354C212.759 354 167.338 346.457 127.284 331.371C87.4368 316.285 56.261 295.31 33.7566 268.445C11.2522 241.58 0 211.098 0 177C0 142.902 11.149 112.42 33.4469 85.5552C55.9513 58.69 87.1271 37.7145 126.974 22.6287C167.028 7.54291 212.45 0 263.239 0C313.616 0 358.418 7.54291 397.646 22.6287C437.081 37.7145 467.843 58.69 489.935 85.5552C512.026 112.42 523.072 142.902 523.072 177C523.072 211.098 512.026 241.58 489.935 268.445C467.843 295.31 437.081 316.285 397.646 331.371C358.418 346.457 313.719 354 263.549 354ZM263.549 317.422C304.635 317.422 341.076 311.532 372.871 299.753C404.666 287.974 429.338 271.441 446.888 250.156C464.437 228.87 473.212 204.485 473.212 177C473.212 149.515 464.334 125.13 446.578 103.844C429.029 82.5587 404.356 66.0263 372.561 54.2469C340.972 42.4676 304.532 36.5779 263.239 36.5779C222.153 36.5779 185.713 42.4676 153.918 54.2469C122.329 66.0263 97.6566 82.5587 79.9009 103.844C62.3516 125.13 53.577 149.515 53.577 177C53.577 204.485 62.4548 228.87 80.2106 250.156C97.9663 271.441 122.639 287.974 154.227 299.753C186.022 311.532 222.463 317.422 263.549 317.422ZM256.426 273.715C225.663 273.715 202.127 270.615 185.816 264.415C169.712 258.215 158.46 248.296 152.059 234.657C145.866 221.018 142.769 201.902 142.769 177.31C142.769 152.305 146.072 132.982 152.679 119.343C159.492 105.497 171.157 95.5779 187.674 89.5849C204.191 83.3853 227.934 80.2855 258.904 80.2855C295.654 80.2855 324.559 84.2119 345.618 92.0648C366.883 99.9177 377.516 112.937 377.516 131.123C377.516 146.415 369.567 158.194 353.67 166.461C337.979 174.52 315.578 178.447 286.466 178.24L292.351 164.911C312.997 165.117 330.753 167.287 345.618 171.42C360.69 175.553 372.251 181.546 380.303 189.399C388.562 197.046 392.691 206.138 392.691 216.678C392.691 229.077 387.117 239.616 375.968 248.296C364.819 256.769 349.024 263.175 328.585 267.515C308.351 271.648 284.299 273.715 256.426 273.715ZM255.807 235.897C276.659 235.897 293.176 235.07 305.358 233.417C317.539 231.764 326.21 229.284 331.372 225.977C336.74 222.464 339.424 217.918 339.424 212.338C339.424 204.485 334.159 198.595 323.63 194.669C313.1 190.743 296.48 188.779 273.769 188.779H211.83C205.017 188.779 199.855 189.399 196.346 190.639C193.042 191.879 190.874 193.946 189.842 196.839C189.016 199.525 189.016 203.865 189.842 209.858C190.874 217.091 193.249 222.567 196.965 226.287C200.681 229.8 206.978 232.28 215.856 233.727C224.941 235.173 238.257 235.897 255.807 235.897ZM278.105 158.711C293.589 158.711 305.667 156.954 314.339 153.441C323.217 149.722 327.656 144.762 327.656 138.562C327.656 131.329 321.565 126.06 309.384 122.753C297.202 119.447 278.414 117.793 253.019 117.793C236.709 117.793 224.115 118.62 215.237 120.273C206.359 121.926 199.959 124.51 196.036 128.023C192.32 131.536 190.152 136.599 189.532 143.212C189.119 147.965 189.532 151.375 190.771 153.441C192.216 155.508 194.797 156.954 198.513 157.781C202.23 158.401 208.424 158.711 217.095 158.711H278.105ZM736.761 317.422C777.847 317.422 814.287 311.532 846.082 299.753C877.878 287.974 902.55 271.441 920.099 250.156C937.855 228.87 946.733 204.485 946.733 177C946.733 149.515 937.855 125.13 920.099 103.844C902.55 82.5587 877.878 66.0263 846.082 54.2469C814.287 42.4676 777.743 36.5779 736.451 36.5779C695.365 36.5779 658.924 42.4676 627.129 54.2469C595.54 66.0263 570.868 82.5587 553.112 103.844C535.563 125.13 526.788 149.515 526.788 177C526.995 204.485 535.873 228.87 553.422 250.156C571.178 271.441 595.85 287.974 627.439 299.753C659.234 311.532 695.675 317.422 736.761 317.422ZM729.638 273.715C698.875 273.715 675.338 270.615 659.028 264.415C642.923 258.215 631.671 248.296 625.271 234.657C619.077 221.018 615.98 201.902 615.98 177.31C615.98 152.305 619.284 132.982 625.89 119.343C632.704 105.497 644.369 95.5779 660.886 89.5849C677.403 83.3853 701.146 80.2855 732.115 80.2855C768.865 80.2855 797.77 84.2119 818.829 92.0648C840.095 99.9177 850.728 112.937 850.728 131.123C850.728 146.415 842.779 158.194 826.881 166.461C811.19 174.52 788.789 178.447 759.678 178.24L765.562 164.911C786.208 165.117 803.964 167.287 818.829 171.42C833.901 175.553 845.463 181.546 853.515 189.399C861.773 197.046 865.903 206.138 865.903 216.678C865.903 229.077 860.328 239.616 849.179 248.296C838.237 256.769 822.546 263.175 802.106 267.515C781.666 271.648 757.51 273.715 729.638 273.715ZM729.018 235.897C749.871 235.897 766.388 235.07 778.569 233.417C790.957 231.764 799.732 229.284 804.893 225.977C810.055 222.464 812.635 217.918 812.635 212.338C812.635 204.485 807.371 198.595 796.841 194.669C786.518 190.743 770.001 188.779 747.29 188.779H685.352C678.332 188.779 673.17 189.399 669.867 190.639C666.563 191.879 664.396 193.946 663.363 196.839C662.331 199.525 662.228 203.865 663.054 209.858C664.086 217.091 666.46 222.567 670.176 226.287C673.893 229.8 680.19 232.28 689.068 233.727C698.152 235.173 711.469 235.897 729.018 235.897ZM751.316 158.711C766.801 158.711 778.879 156.954 787.55 153.441C796.428 149.722 800.867 144.762 800.867 138.562C800.867 131.329 794.776 126.06 782.595 122.753C770.414 119.447 751.626 117.793 726.231 117.793C709.92 117.793 697.326 118.62 688.448 120.273C679.571 121.926 673.17 124.51 669.247 128.023C665.531 131.536 663.466 136.599 663.054 143.212C662.641 147.965 663.054 151.375 664.292 153.441C665.531 155.508 668.009 156.954 671.725 157.781C675.441 158.401 681.635 158.711 690.307 158.711H751.316Z" fill="#111111"/>
+    </svg>
+  </div>
   <div class="meta">Bakken &amp; Bæck &middot; Internal</div>
 </div>
 
@@ -222,10 +230,13 @@
   </div>
   <ul class="items">
     <li>
-      <div class="item-title">Blender 5.2 LTS is out (July 14)</div>
-      <div class="item-body">Headline feature is an experimental procedural approach to physics — hair and cloth simulation built with Geometry Nodes instead of dedicated modifiers — plus remote-hosted asset libraries, a new Cycles texture cache, Principled BSDF thin-wall mode, and a new Grease Pencil fill algorithm. Two years of LTS support, so studios will actually build on it.</div>
-      <img class="shot" src="https://www.blender.org/wp-content/uploads/2026/07/5_2_lion-480x270.webp" alt="Blender 5.2 LTS splash art">
-      <a class="src" href="https://www.blender.org/press/blender-5-2-lts-release/" target="_blank">blender.org ↗</a>
+      <div class="card">
+        <div class="card-band">July 14, 2026</div>
+        <img class="shot" src="https://www.blender.org/wp-content/uploads/2026/07/5_2_lion-480x270.webp" alt="Blender 5.2 LTS splash art">
+        <div class="card-title">Blender 5.2 LTS is out</div>
+        <div class="card-body">Headline feature is an experimental procedural approach to physics — hair and cloth simulation built with Geometry Nodes instead of dedicated modifiers — plus remote-hosted asset libraries, a new Cycles texture cache, Principled BSDF thin-wall mode, and a new Grease Pencil fill algorithm. Two years of LTS support, so studios will actually build on it.</div>
+        <a class="src" href="https://www.blender.org/press/blender-5-2-lts-release/" target="_blank">blender.org ↗</a>
+      </div>
     </li>
     <li>
       <div class="item-title">TouchDesigner build 2025.33060 (July 16)</div>
@@ -246,10 +257,13 @@
   </div>
   <ul class="items">
     <li>
-      <div class="item-title">Building an Interactive Wave Propagation Cube Grid with Three.js</div>
-      <div class="item-body">Codrops, July 9 — Hong Kong dev Franky Hung breaks down a 40×40 cube grid driven by custom GLSL shaders, rippling in response to mouse movement with realistic shadowing. Full code and a live demo included, a solid reference for procedural, shader-driven motion on the web.</div>
-      <img class="shot" src="https://opengraph.githubassets.com/1/franky-adl/3d-wave-grid" alt="3D wave grid Three.js project preview">
-      <a class="src" href="https://tympanus.net/codrops/2026/07/09/building-an-interactive-wave-propagation-cube-grid-with-three-js/" target="_blank">tympanus.net/codrops ↗</a>
+      <div class="card">
+        <div class="card-band">Codrops · July 9, 2026</div>
+        <img class="shot" src="https://opengraph.githubassets.com/1/franky-adl/3d-wave-grid" alt="3D wave grid Three.js project preview">
+        <div class="card-title">Building an Interactive Wave Propagation Cube Grid with Three.js</div>
+        <div class="card-body">Hong Kong dev Franky Hung breaks down a 40×40 cube grid driven by custom GLSL shaders, rippling in response to mouse movement with realistic shadowing. Full code and a live demo included, a solid reference for procedural, shader-driven motion on the web.</div>
+        <a class="src" href="https://tympanus.net/codrops/2026/07/09/building-an-interactive-wave-propagation-cube-grid-with-three-js/" target="_blank">tympanus.net/codrops ↗</a>
+      </div>
     </li>
     <li>
       <div class="quiet">Otherwise a routine week — School of Motion's Grease Pencil walkthrough and Motionographer's Tribeca Festival coverage were the main community posts, nothing that changes technique.</div>
@@ -265,10 +279,13 @@
   </div>
   <ul class="items">
     <li>
-      <div class="item-title">Codrops profiled makemepulse (July 13)</div>
-      <div class="item-body">"Where Stories Become Interactive Worlds" is a studio-practice piece on how the Paris/London interactive studio structures work across web, XR and physical installations, using their Moebius-inspired <em>Nomadic Tribe</em> tale as the throughline example of blending story, sound and real-time 3D in one in-house engine.</div>
-      <img class="shot" src="https://images.prismic.io/makemepulse/7042991f-0f5c-4abd-b77d-c5aa5ff59813_Nomadic-Tribe_gif1.gif" alt="Nomadic Tribe interactive tale by makemepulse">
-      <a class="src" href="https://tympanus.net/codrops/2026/07/13/where-stories-become-interactive-worlds-how-makemepulse-brings-ideas-to-life-across-web-xr-and-beyond/" target="_blank">tympanus.net/codrops ↗</a>
+      <div class="card">
+        <div class="card-band">Codrops · July 13, 2026</div>
+        <img class="shot" src="https://images.prismic.io/makemepulse/7042991f-0f5c-4abd-b77d-c5aa5ff59813_Nomadic-Tribe_gif1.gif" alt="Nomadic Tribe interactive tale by makemepulse">
+        <div class="card-title">Codrops profiled makemepulse</div>
+        <div class="card-body">"Where Stories Become Interactive Worlds" is a studio-practice piece on how the Paris/London interactive studio structures work across web, XR and physical installations, using their Moebius-inspired <em>Nomadic Tribe</em> tale as the throughline example of blending story, sound and real-time 3D in one in-house engine.</div>
+        <a class="src" href="https://tympanus.net/codrops/2026/07/13/where-stories-become-interactive-worlds-how-makemepulse-brings-ideas-to-life-across-web-xr-and-beyond/" target="_blank">tympanus.net/codrops ↗</a>
+      </div>
     </li>
     <li>
       <div class="quiet">On the AI-workflow front: this week's coverage mostly re-states a directional trend (studios shifting from manual vertex work to high-level art direction) rather than reporting a specific new practice — worth watching, nothing concrete to act on yet.</div>
