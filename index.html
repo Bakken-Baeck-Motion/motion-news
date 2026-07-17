@@ -140,28 +140,23 @@
   .item-body { color: var(--ink); }
   .quiet { color: var(--muted); font-style: normal; }
 
-  /* journal-card style for items with images: date/tag band, flush image, title, caption below.
-     Capped width so images read as contained thumbnails, not hero banners. */
-  .card { margin: 0; max-width: 380px; }
-  .card-band {
-    background: var(--band);
-    color: #55524c;
-    font-size: 13px;
-    padding: 10px 14px;
-  }
+  /* editorial article style for items with images: image first (sized to its own resolution,
+     never force-stretched — avoids blur), then bold title, then dark readable body copy below.
+     Capped width keeps a balance: big enough to read, never a full-bleed hero. */
+  .card { margin: 0; max-width: 640px; }
   img.shot {
     display: block;
-    width: 100%;
+    max-width: 100%;
     height: auto;
-    margin: 0;
+    margin: 0 0 16px;
     border-radius: 0;
   }
   .card-title {
     font-weight: 700;
-    margin-top: 14px;
+    margin-top: 0;
   }
   .card-body {
-    color: var(--muted);
+    color: var(--ink);
     margin-top: 4px;
   }
 
@@ -234,9 +229,8 @@
   <ul class="items">
     <li>
       <div class="card">
-        <div class="card-band">July 14, 2026</div>
         <img class="shot" src="https://www.blender.org/wp-content/uploads/2026/07/5_2_lion-480x270.webp" alt="Blender 5.2 LTS splash art">
-        <div class="card-title">Blender 5.2 LTS is out</div>
+        <div class="card-title">Blender 5.2 LTS is out (July 14)</div>
         <div class="card-body">Headline feature is an experimental procedural approach to physics — hair and cloth simulation built with Geometry Nodes instead of dedicated modifiers — plus remote-hosted asset libraries, a new Cycles texture cache, Principled BSDF thin-wall mode, and a new Grease Pencil fill algorithm. Two years of LTS support, so studios will actually build on it.</div>
         <a class="src" href="https://www.blender.org/press/blender-5-2-lts-release/" target="_blank">blender.org ↗</a>
       </div>
@@ -261,9 +255,8 @@
   <ul class="items">
     <li>
       <div class="card">
-        <div class="card-band">Codrops · July 9, 2026</div>
         <img class="shot" src="https://opengraph.githubassets.com/1/franky-adl/3d-wave-grid" alt="3D wave grid Three.js project preview">
-        <div class="card-title">Building an Interactive Wave Propagation Cube Grid with Three.js</div>
+        <div class="card-title">Building an Interactive Wave Propagation Cube Grid with Three.js (Codrops, July 9)</div>
         <div class="card-body">Hong Kong dev Franky Hung breaks down a 40×40 cube grid driven by custom GLSL shaders, rippling in response to mouse movement with realistic shadowing. Full code and a live demo included, a solid reference for procedural, shader-driven motion on the web.</div>
         <a class="src" href="https://tympanus.net/codrops/2026/07/09/building-an-interactive-wave-propagation-cube-grid-with-three-js/" target="_blank">tympanus.net/codrops ↗</a>
       </div>
