@@ -179,12 +179,13 @@
   }
   a.src:hover { border-color: var(--ink); }
 
-  /* worth a deeper look = quote-style band */
+  /* worth a deeper look = quote-style band, inset to match text/image margins */
   .deeper-band {
     background: var(--band);
-    padding: 48px;
+    margin: 0 48px 44px;
+    padding: 40px;
   }
-  @media (max-width: 640px) { .deeper-band { padding: 32px 20px; } }
+  @media (max-width: 640px) { .deeper-band { margin: 0 20px 32px; padding: 28px 20px; } }
   .deeper-item { margin-bottom: 28px; }
   .deeper-item:last-child { margin-bottom: 0; }
   .deeper-item h3 {
