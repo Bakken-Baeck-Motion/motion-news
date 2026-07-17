@@ -69,13 +69,13 @@
     letter-spacing: 0.06em;
   }
 
-  /* lead band, full bleed */
+  /* lead band, inset to match text/image margins */
   .lead-band {
     background: var(--band);
-    padding: 40px 48px;
-    margin: 0 0 8px;
+    margin: 0 48px 8px;
+    padding: 32px;
   }
-  @media (max-width: 640px) { .lead-band { padding: 28px 20px; } }
+  @media (max-width: 640px) { .lead-band { margin: 0 20px 8px; padding: 24px 20px; } }
   .lead-band .tag {
     display: inline-block;
     font-size: 11px;
@@ -140,17 +140,19 @@
   .item-body { color: var(--ink); }
   .quiet { color: var(--muted); font-style: normal; }
 
-  /* journal-card style for items with images: date/tag band, flush image, title, caption below */
-  .card { margin: 0; }
+  /* journal-card style for items with images: date/tag band, flush image, title, caption below.
+     Capped width so images read as contained thumbnails, not hero banners. */
+  .card { margin: 0; max-width: 380px; }
   .card-band {
     background: var(--band);
     color: #55524c;
     font-size: 13px;
-    padding: 12px 16px;
+    padding: 10px 14px;
   }
   img.shot {
     display: block;
     width: 100%;
+    height: auto;
     margin: 0;
     border-radius: 0;
   }
