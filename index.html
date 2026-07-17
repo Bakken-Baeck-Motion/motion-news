@@ -2,160 +2,297 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Motion News — Week 29</title>
 <style>
+  :root {
+    --ink: #111111;
+    --muted: #8f8f8f;
+    --line: #e7e5e0;
+    --bg: #ffffff;
+    --band: #f5f4f1;
+    --pink: #f5c9dd;
+    --green: #3ddc84;
+    --blue: #2f7ef5;
+  }
+  * { box-sizing: border-box; }
   body {
-    background: #f7f5f0;
-    color: #1c1c1c;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
-    line-height: 1.55;
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
   }
-  h1 {
-    font-size: 26px;
-    margin-bottom: 4px;
-    letter-spacing: -0.01em;
+  .edge {
+    padding: 0 48px;
   }
-  .dates {
-    color: #777;
-    font-size: 14px;
-    margin-bottom: 28px;
+  @media (max-width: 640px) {
+    .edge { padding: 0 20px; }
   }
-  .lead {
-    background: #1c1c1c;
-    color: #f7f5f0;
-    padding: 18px 22px;
-    border-radius: 10px;
-    font-size: 15px;
-    margin-bottom: 36px;
+
+  /* top mark */
+  .mark-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 48px;
+    border-bottom: 1px solid var(--line);
   }
-  .lead strong {
-    display: block;
+  @media (max-width: 640px) { .mark-row { padding: 20px; } }
+  .mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .mark-row .meta {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* headline, "Label. Bold sentence." pattern */
+  .headline {
+    padding: 56px 48px 40px;
+  }
+  @media (max-width: 640px) { .headline { padding: 36px 20px 28px; } }
+  .headline h1 {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+  .headline h1 .label { color: var(--muted); font-weight: 700; }
+  .window {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* lead band, full bleed */
+  .lead-band {
+    background: var(--band);
+    padding: 40px 48px;
+    margin: 0 0 8px;
+  }
+  @media (max-width: 640px) { .lead-band { padding: 28px 20px; } }
+  .lead-band .tag {
+    display: inline-block;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #b8b8b8;
-    margin-bottom: 6px;
-    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 10px;
   }
-  h2 {
+  .lead-band p {
+    margin: 0;
+    font-size: clamp(18px, 2.4vw, 24px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    max-width: 900px;
+  }
+
+  section.block {
+    padding: 44px 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 640px) { section.block { padding: 32px 20px; } }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .sec-num {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .sec-bar {
+    width: 22px;
+    height: 4px;
+    border-radius: 2px;
+    margin-right: 2px;
+  }
+  .bar-pink { background: var(--pink); }
+  .bar-green { background: var(--green); }
+  .bar-blue { background: var(--blue); }
+  .bar-ink { background: var(--ink); }
+
+  h2.sec-title {
+    margin: 0;
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #8a6d3b;
-    border-bottom: 1px solid #ddd6c8;
-    padding-bottom: 8px;
-    margin-top: 44px;
-    margin-bottom: 18px;
+    font-weight: 700;
+    color: var(--ink);
   }
-  ul {
-    padding-left: 20px;
-    margin: 0 0 8px;
+
+  ul.items { list-style: none; margin: 0; padding: 0; }
+  ul.items > li {
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
   }
-  li {
-    margin-bottom: 16px;
-  }
-  li::marker { color: #b3a37a; }
-  .item-title {
-    font-weight: 600;
-  }
-  img {
+  ul.items > li:first-child { border-top: none; padding-top: 0; }
+
+  .item-title { font-weight: 700; }
+  .item-body { color: var(--ink); }
+  .quiet { color: var(--muted); font-style: normal; }
+
+  img.shot {
     display: block;
-    max-width: 100%;
-    border-radius: 8px;
-    margin: 10px 0 14px;
+    width: 100%;
+    max-width: 560px;
+    border-radius: 2px;
+    margin: 14px 0;
   }
-  a {
-    color: #8a6d3b;
-    text-decoration: underline;
-    text-decoration-color: #d8c9a3;
-  }
-  .quiet {
-    color: #777;
-    font-style: italic;
-  }
-  .deeper {
-    background: #efe9dc;
-    border-radius: 10px;
-    padding: 4px 22px 18px;
-  }
-  .deeper h3 {
-    font-size: 15px;
-    margin-bottom: 4px;
-  }
-  footer {
-    margin-top: 48px;
+
+  a.src {
+    display: inline-block;
+    margin-top: 10px;
     font-size: 12px;
-    color: #999;
-    border-top: 1px solid #ddd6c8;
-    padding-top: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 14px;
   }
+  a.src:hover { border-color: var(--ink); }
+
+  /* worth a deeper look = quote-style band */
+  .deeper-band {
+    background: var(--band);
+    padding: 48px;
+  }
+  @media (max-width: 640px) { .deeper-band { padding: 32px 20px; } }
+  .deeper-item { margin-bottom: 28px; }
+  .deeper-item:last-child { margin-bottom: 0; }
+  .deeper-item h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .deeper-item p { margin: 0; color: #333; }
+
+  footer {
+    padding: 28px 48px 48px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  @media (max-width: 640px) { footer { padding: 20px; } }
 </style>
 </head>
 <body>
 
-<h1>Motion News — Week 29</h1>
-<div class="dates">July 10–16, 2026 · a 5-minute read for the studio</div>
-
-<div class="lead">
-<strong>If you only read one thing</strong>
-Blender 5.2 LTS ships an experimental node-based physics system for hair and cloth — procedural simulation is quietly becoming a first-class citizen in the same graph motion designers already use for generative graphics.
+<div class="mark-row">
+  <div class="mark">MN</div>
+  <div class="meta">Bakken &amp; Bæck &middot; Internal</div>
 </div>
 
-<h2>1. Tools &amp; Software</h2>
-<ul>
-  <li>
-    <span class="item-title">Blender 5.2 LTS is out (July 14).</span>
-    Headline feature is an experimental procedural approach to physics — hair and cloth simulation built with Geometry Nodes instead of dedicated modifiers — plus remote-hosted asset libraries, a new Cycles texture cache, Principled BSDF thin-wall mode, and a new Grease Pencil fill algorithm. Two years of LTS support, so studios will actually build on it.
-    <img src="https://www.blender.org/wp-content/uploads/2026/07/5_2_lion-480x270.webp" alt="Blender 5.2 LTS splash art">
-    <a href="https://www.blender.org/press/blender-5-2-lts-release/" target="_blank">blender.org</a>
-  </li>
-  <li>
-    <span class="item-title">TouchDesigner build 2025.33060 (July 16)</span> — the latest bi-monthly build in the 2025 cycle, continuing to mature the Point Operators (POPs) family for high-performance point-cloud and 3D work. Incremental, but keeps momentum behind POPs adoption.
-    <a href="https://derivative.ca/download/archive" target="_blank">derivative.ca</a>
-  </li>
-  <li class="quiet">Quiet week for Cavalry, Rive, Spline, Framer and Figma — no dated releases in the past 7 days worth flagging (Figma Motion and the After Effects 26.3 update both landed in June, outside this window).</li>
-</ul>
+<div class="headline edge">
+  <h1><span class="label">Motion News.</span> Week 29 — what shipped, what's worth reading, what's worth building on.</h1>
+  <div class="window">17 July 2026 &middot; research window 10–16 July 2026</div>
+</div>
 
-<h2>2. Techniques Being Discussed</h2>
-<ul>
-  <li>
-    <span class="item-title">Building an Interactive Wave Propagation Cube Grid with Three.js</span> (Codrops, July 9) — Hong Kong dev Franky Hung breaks down a 40×40 cube grid driven by custom GLSL shaders, rippling in response to mouse movement with realistic shadowing. Full code and a live demo included, a solid reference for procedural, shader-driven motion on the web.
-    <img src="https://opengraph.githubassets.com/1/franky-adl/3d-wave-grid" alt="3D wave grid Three.js project preview">
-    <a href="https://tympanus.net/codrops/2026/07/09/building-an-interactive-wave-propagation-cube-grid-with-three-js/" target="_blank">tympanus.net/codrops</a>
-  </li>
-  <li class="quiet">Otherwise a routine week — School of Motion's Grease Pencil walkthrough and Motionographer's Tribeca Festival coverage were the main community posts, nothing that changes technique.</li>
-</ul>
+<div class="lead-band">
+  <span class="tag">If you only read one thing</span>
+  <p>Blender 5.2 LTS ships an experimental node-based physics system for hair and cloth — procedural simulation is quietly becoming a first-class citizen in the same graph motion designers already use for generative graphics.</p>
+</div>
 
-<h2>3. Design × Tech Intersection</h2>
-<ul>
-  <li>
-    <span class="item-title">Codrops profiled makemepulse</span> (July 13) — "Where Stories Become Interactive Worlds" is a studio-practice piece on how the Paris/London interactive studio structures work across web, XR and physical installations, using their Moebius-inspired <em>Nomadic Tribe</em> tale as the throughline example of blending story, sound and real-time 3D in one in-house engine.
-    <img src="https://images.prismic.io/makemepulse/7042991f-0f5c-4abd-b77d-c5aa5ff59813_Nomadic-Tribe_gif1.gif" alt="Nomadic Tribe interactive tale by makemepulse">
-    <a href="https://tympanus.net/codrops/2026/07/13/where-stories-become-interactive-worlds-how-makemepulse-brings-ideas-to-life-across-web-xr-and-beyond/" target="_blank">tympanus.net/codrops</a>
-  </li>
-  <li class="quiet">On the AI-workflow front: this week's coverage mostly re-states a directional trend (studios shifting from manual vertex work to high-level art direction) rather than reporting a specific new practice — worth watching, nothing concrete to act on yet.</li>
-</ul>
+<section class="block">
+  <div class="sec-head">
+    <span class="sec-bar bar-pink"></span>
+    <span class="sec-num">01</span>
+    <h2 class="sec-title">Tools &amp; Software</h2>
+  </div>
+  <ul class="items">
+    <li>
+      <div class="item-title">Blender 5.2 LTS is out (July 14)</div>
+      <div class="item-body">Headline feature is an experimental procedural approach to physics — hair and cloth simulation built with Geometry Nodes instead of dedicated modifiers — plus remote-hosted asset libraries, a new Cycles texture cache, Principled BSDF thin-wall mode, and a new Grease Pencil fill algorithm. Two years of LTS support, so studios will actually build on it.</div>
+      <img class="shot" src="https://www.blender.org/wp-content/uploads/2026/07/5_2_lion-480x270.webp" alt="Blender 5.2 LTS splash art">
+      <a class="src" href="https://www.blender.org/press/blender-5-2-lts-release/" target="_blank">blender.org ↗</a>
+    </li>
+    <li>
+      <div class="item-title">TouchDesigner build 2025.33060 (July 16)</div>
+      <div class="item-body">The latest bi-monthly build in the 2025 cycle, continuing to mature the Point Operators (POPs) family for high-performance point-cloud and 3D work. Incremental, but keeps momentum behind POPs adoption.</div>
+      <a class="src" href="https://derivative.ca/download/archive" target="_blank">derivative.ca ↗</a>
+    </li>
+    <li>
+      <div class="quiet">Quiet week for Cavalry, Rive, Spline, Framer and Figma — no dated releases in the past 7 days worth flagging (Figma Motion and the After Effects 26.3 update both landed in June, outside this window).</div>
+    </li>
+  </ul>
+</section>
 
-<div class="deeper">
-<h2 style="border:none;padding:0;margin-top:24px;">4. Worth a Deeper Look</h2>
-<ul>
-  <li>
+<section class="block">
+  <div class="sec-head">
+    <span class="sec-bar bar-green"></span>
+    <span class="sec-num">02</span>
+    <h2 class="sec-title">Techniques Being Discussed</h2>
+  </div>
+  <ul class="items">
+    <li>
+      <div class="item-title">Building an Interactive Wave Propagation Cube Grid with Three.js</div>
+      <div class="item-body">Codrops, July 9 — Hong Kong dev Franky Hung breaks down a 40×40 cube grid driven by custom GLSL shaders, rippling in response to mouse movement with realistic shadowing. Full code and a live demo included, a solid reference for procedural, shader-driven motion on the web.</div>
+      <img class="shot" src="https://opengraph.githubassets.com/1/franky-adl/3d-wave-grid" alt="3D wave grid Three.js project preview">
+      <a class="src" href="https://tympanus.net/codrops/2026/07/09/building-an-interactive-wave-propagation-cube-grid-with-three-js/" target="_blank">tympanus.net/codrops ↗</a>
+    </li>
+    <li>
+      <div class="quiet">Otherwise a routine week — School of Motion's Grease Pencil walkthrough and Motionographer's Tribeca Festival coverage were the main community posts, nothing that changes technique.</div>
+    </li>
+  </ul>
+</section>
+
+<section class="block">
+  <div class="sec-head">
+    <span class="sec-bar bar-blue"></span>
+    <span class="sec-num">03</span>
+    <h2 class="sec-title">Design × Tech Intersection</h2>
+  </div>
+  <ul class="items">
+    <li>
+      <div class="item-title">Codrops profiled makemepulse (July 13)</div>
+      <div class="item-body">"Where Stories Become Interactive Worlds" is a studio-practice piece on how the Paris/London interactive studio structures work across web, XR and physical installations, using their Moebius-inspired <em>Nomadic Tribe</em> tale as the throughline example of blending story, sound and real-time 3D in one in-house engine.</div>
+      <img class="shot" src="https://images.prismic.io/makemepulse/7042991f-0f5c-4abd-b77d-c5aa5ff59813_Nomadic-Tribe_gif1.gif" alt="Nomadic Tribe interactive tale by makemepulse">
+      <a class="src" href="https://tympanus.net/codrops/2026/07/13/where-stories-become-interactive-worlds-how-makemepulse-brings-ideas-to-life-across-web-xr-and-beyond/" target="_blank">tympanus.net/codrops ↗</a>
+    </li>
+    <li>
+      <div class="quiet">On the AI-workflow front: this week's coverage mostly re-states a directional trend (studios shifting from manual vertex work to high-level art direction) rather than reporting a specific new practice — worth watching, nothing concrete to act on yet.</div>
+    </li>
+  </ul>
+</section>
+
+<section class="deeper-band">
+  <div class="sec-head" style="margin-bottom:28px;">
+    <span class="sec-bar bar-ink"></span>
+    <span class="sec-num">04</span>
+    <h2 class="sec-title">Worth a Deeper Look</h2>
+  </div>
+  <div class="deeper-item">
     <h3>Blender's node-based physics</h3>
-    Folding hair and cloth simulation into Geometry Nodes means the same procedural graph used for generative motion work can now also drive physical simulation — collapsing a line that's existed since node systems arrived in DCC tools. Combined with a 2-year LTS window, it's a credible signal that procedural/simulation pipelines will consolidate around node graphs rather than dedicated modifiers.
-  </li>
-  <li>
+    <p>Folding hair and cloth simulation into Geometry Nodes means the same procedural graph used for generative motion work can now also drive physical simulation — collapsing a line that's existed since node systems arrived in DCC tools. Combined with a 2-year LTS window, it's a credible signal that procedural/simulation pipelines will consolidate around node graphs rather than dedicated modifiers.</p>
+  </div>
+  <div class="deeper-item">
     <h3>The makemepulse Codrops feature</h3>
-    It's a rare, granular look at how a top-tier interactive studio organizes cross-disciplinary work — web, XR, installation — around a single narrative asset and in-house engine. Useful less as news and more as a structural model for how a studio like B&amp;B might frame its own multi-platform projects.
-  </li>
-</ul>
-</div>
+    <p>It's a rare, granular look at how a top-tier interactive studio organizes cross-disciplinary work — web, XR, installation — around a single narrative asset and in-house engine. Useful less as news and more as a structural model for how a studio like B&amp;B might frame its own multi-platform projects.</p>
+  </div>
+</section>
 
-<footer>Compiled automatically from web sources published July 10–16, 2026.</footer>
+<footer>Compiled automatically from web sources published 10–16 July 2026.</footer>
 
 </body>
 </html>
-
-<!-- AUTOMATION TEST Fri Jul 17 14:30:25 CEST 2026 -->
