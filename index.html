@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Motion News — Week 29</title>
+<title>Motion News — Week 30</title>
 <style>
   :root {
     --ink: #111111;
@@ -151,6 +151,14 @@
     margin: 0 0 16px;
     border-radius: 0;
   }
+  .card-title {
+    font-weight: 700;
+    margin-top: 0;
+  }
+  .card-body {
+    color: var(--ink);
+    margin-top: 4px;
+  }
 
   /* optional hero + secondary thumbnails row, used only when extra images exist for an item */
   .img-grid {
@@ -169,14 +177,6 @@
   @media (max-width: 640px) {
     .img-grid { flex-direction: column; }
     .img-grid img.shot, .img-grid img.shot.hero { flex: none; height: auto; }
-  }
-  .card-title {
-    font-weight: 700;
-    margin-top: 0;
-  }
-  .card-body {
-    color: var(--ink);
-    margin-top: 4px;
   }
 
   a.src {
@@ -230,13 +230,13 @@
 </div>
 
 <div class="headline edge">
-  <h1><span class="label">Motion News.</span> Week 29 — what shipped, what's worth reading, what's worth building on.</h1>
-  <div class="window">17 July 2026 &middot; research window 10–16 July 2026</div>
+  <h1><span class="label">Motion News.</span> Week 30 — what shipped, what's worth reading, what's worth building on.</h1>
+  <div class="window">20 July 2026 &middot; research window 14–20 July 2026</div>
 </div>
 
 <div class="lead-band">
   <span class="tag">If you only read one thing</span>
-  <p>Blender 5.2 LTS ships an experimental node-based physics system for hair and cloth — procedural simulation is quietly becoming a first-class citizen in the same graph motion designers already use for generative graphics.</p>
+  <p>Decart AI's Lucy 2.5 now edits live video streams in real time — 30fps at 1080p, under 40ms latency — the clearest sign yet that generative video is crossing from offline rendering into genuinely live, interactive territory.</p>
 </div>
 
 <section class="block">
@@ -248,19 +248,29 @@
   <ul class="items">
     <li>
       <div class="card">
-        <img class="shot" src="https://www.blender.org/wp-content/uploads/2026/07/5_2_lion-480x270.webp" alt="Blender 5.2 LTS splash art">
-        <div class="card-title">Blender 5.2 LTS is out (July 14)</div>
-        <div class="card-body">Headline feature is an experimental procedural approach to physics — hair and cloth simulation built with Geometry Nodes instead of dedicated modifiers — plus remote-hosted asset libraries, a new Cycles texture cache, Principled BSDF thin-wall mode, and a new Grease Pencil fill algorithm. Two years of LTS support, so studios will actually build on it.</div>
-        <a class="src" href="https://www.blender.org/press/blender-5-2-lts-release/" target="_blank">blender.org ↗</a>
+        <img class="shot" src="https://framerusercontent.com/images/k6xCc1VeBDGJTeind5JgrukG53k.png?width=1600&height=900" alt="Framer CMS 3.1 inline add-item row">
+        <div class="card-title">Framer ships CMS 3.1 (July 14)</div>
+        <div class="card-body">An inline "add item" row for CMS collections plus agent-aware table improvements. A small quality-of-life update, but it speeds up content-driven prototyping noticeably.</div>
+        <a class="src" href="https://www.framer.com/updates/cms-3.1" target="_blank">framer.com ↗</a>
       </div>
     </li>
     <li>
-      <div class="item-title">TouchDesigner build 2025.33060 (July 16)</div>
-      <div class="item-body">The latest bi-monthly build in the 2025 cycle, continuing to mature the Point Operators (POPs) family for high-performance point-cloud and 3D work. Incremental, but keeps momentum behind POPs adoption.</div>
-      <a class="src" href="https://derivative.ca/download/archive" target="_blank">derivative.ca ↗</a>
+      <div class="item-title">TouchDesigner build 2025.33070 (July 16)</div>
+      <div class="item-body">New glTF In/Out COMPs for full geometry, camera and animation import/export, a Script POP operator, and RenderStream 3.0. Useful for anyone bridging TD with DCC tools or game engines.</div>
+      <a class="src" href="https://docs.derivative.ca/Release_Notes" target="_blank">docs.derivative.ca ↗</a>
     </li>
     <li>
-      <div class="quiet">Quiet week for Cavalry, Rive, Spline, Framer and Figma — no dated releases in the past 7 days worth flagging (Figma Motion and the After Effects 26.3 update both landed in June, outside this window).</div>
+      <div class="item-title">Figma's code-backed screens now bind to variables (July 16)</div>
+      <div class="item-body">Screens brought onto canvas from Figma Make, MCP, or Chrome capture now attach to file variables and auto-layout instead of hardcoding values — tightening the design-to-code loop for teams prototyping in code.</div>
+      <a class="src" href="https://www.figma.com/release-notes/" target="_blank">figma.com ↗</a>
+    </li>
+    <li>
+      <div class="item-title">New tool to watch: Canva Code 2.0 (July 14)</div>
+      <div class="item-body">A relaunched prompt-to-app "vibe coding" platform where the output stays visually editable like a normal Canva design — lowering the bar for designers to ship small interactive pieces without a developer.</div>
+      <a class="src" href="https://www.canva.com/newsroom/news/Canva-Code/" target="_blank">canva.com ↗</a>
+    </li>
+    <li>
+      <div class="quiet">Blender 5.2 LTS (covered last issue) remains the week's biggest 3D release; nothing new to add. Quiet week otherwise for Cavalry, Rive, After Effects (routine security patch only), Spline and Procreate Dreams.</div>
     </li>
   </ul>
 </section>
@@ -274,14 +284,27 @@
   <ul class="items">
     <li>
       <div class="card">
-        <img class="shot" src="https://opengraph.githubassets.com/1/franky-adl/3d-wave-grid" alt="3D wave grid Three.js project preview">
-        <div class="card-title">Building an Interactive Wave Propagation Cube Grid with Three.js (Codrops, July 9)</div>
-        <div class="card-body">Hong Kong dev Franky Hung breaks down a 40×40 cube grid driven by custom GLSL shaders, rippling in response to mouse movement with realistic shadowing. Full code and a live demo included, a solid reference for procedural, shader-driven motion on the web.</div>
-        <a class="src" href="https://tympanus.net/codrops/2026/07/09/building-an-interactive-wave-propagation-cube-grid-with-three-js/" target="_blank">tympanus.net/codrops ↗</a>
+        <img class="shot" src="https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/07/trionn.png.webp" alt="Trionn interactive site breakdown">
+        <div class="card-title">The Architecture Behind Trionn (Codrops, July 15)</div>
+        <div class="card-body">An engineering breakdown syncing GSAP/ScrollTrigger with a raw Three.js render loop: vertex-deformed gallery cards, an SDF corner shader, a Web Audio "pluck" logo sound, and an audio-reactive smoke shader.</div>
+        <a class="src" href="https://tympanus.net/codrops/2026/07/15/the-architecture-behind-trionn-coordinating-gsap-three-js-lenis-and-web-audio/" target="_blank">tympanus.net/codrops ↗</a>
       </div>
     </li>
     <li>
-      <div class="quiet">Otherwise a routine week — School of Motion's Grease Pencil walkthrough and Motionographer's Tribeca Festival coverage were the main community posts, nothing that changes technique.</div>
+      <div class="card">
+        <img class="shot" src="https://codrops-1f606.kxcdn.com/codrops/wp-content/uploads/2026/07/coverzero.jpeg" alt="ZERO interactive narrative engineering breakdown">
+        <div class="card-title">ZERO: The Engineering Behind a Defiant Interactive Narrative (Codrops, July 17)</div>
+        <div class="card-body">A segment-based scene state machine (enter/scrub/update/teardown) replacing ScrollTrigger, a KTX2 texture compression pipeline, and an adaptive quality manager tied to frame-time — a genuinely reusable performance architecture pattern.</div>
+        <a class="src" href="https://tympanus.net/codrops/2026/07/17/zero-the-engineering-behind-a-defiant-interactive-narrative/" target="_blank">tympanus.net/codrops ↗</a>
+      </div>
+    </li>
+    <li>
+      <div class="item-title">Image Revealing, a node-based texture transition (elekktronaut, July 16)</div>
+      <div class="item-body">A simple, reusable TouchDesigner node setup for revealing images through masked transitions — handy as a base pattern for title cards and reveals.</div>
+      <a class="src" href="https://www.elekktronaut.com/tutorials/image-revealing" target="_blank">elekktronaut.com ↗</a>
+    </li>
+    <li>
+      <div class="quiet">School of Motion, the Awwwards blog, the Rive blog and Motionographer had no new posts in this window.</div>
     </li>
   </ul>
 </section>
@@ -295,14 +318,24 @@
   <ul class="items">
     <li>
       <div class="card">
-        <img class="shot" src="https://images.prismic.io/makemepulse/7042991f-0f5c-4abd-b77d-c5aa5ff59813_Nomadic-Tribe_gif1.gif" alt="Nomadic Tribe interactive tale by makemepulse">
-        <div class="card-title">Codrops profiled makemepulse (July 13)</div>
-        <div class="card-body">"Where Stories Become Interactive Worlds" is a studio-practice piece on how the Paris/London interactive studio structures work across web, XR and physical installations, using their Moebius-inspired <em>Nomadic Tribe</em> tale as the throughline example of blending story, sound and real-time 3D in one in-house engine.</div>
-        <a class="src" href="https://tympanus.net/codrops/2026/07/13/where-stories-become-interactive-worlds-how-makemepulse-brings-ideas-to-life-across-web-xr-and-beyond/" target="_blank">tympanus.net/codrops ↗</a>
+        <img class="shot" src="https://cdn.prod.website-files.com/69ac78b058a3b8e6de5d1387/6a58fb11f836e7ee4c341c45_Blog%20Header.png" alt="Decart AI Lucy 2.5 live video editing">
+        <div class="card-title">Decart AI's Lucy 2.5 edits live video in real time (July 16)</div>
+        <div class="card-body">A generative video model that edits live streams at 30fps/1080p with sub-40ms latency, using "Self-Anchoring" to keep the output temporally stable. Directly relevant to any studio building real-time or live interactive experiences.</div>
+        <a class="src" href="https://decart.ai/publications/lucy-2-5-raising-the-bar-for-live-ai" target="_blank">decart.ai ↗</a>
       </div>
     </li>
     <li>
-      <div class="quiet">On the AI-workflow front: this week's coverage mostly re-states a directional trend (studios shifting from manual vertex work to high-level art direction) rather than reporting a specific new practice — worth watching, nothing concrete to act on yet.</div>
+      <div class="item-title">Netflix discloses GenAI use across ~300 titles in H1 2026 (Cartoon Brew, July 17)</div>
+      <div class="item-body">Its Q2 shareholder letter cites 17 minutes of "AI-enhanced" footage in one docuseries produced at half cost and double speed — one of the more concrete disclosures yet, though still light on specifics.</div>
+      <a class="src" href="https://www.cartoonbrew.com/artificial-intelligence/netflix-genai-300-titles-in-first-half-2026-264631.html" target="_blank">cartoonbrew.com ↗</a>
+    </li>
+    <li>
+      <div class="item-title">Disney Jr. and Animaj quietly launch "Ozzy Fox" with an AI-assisted pipeline (Cartoon Brew, July 17)</div>
+      <div class="item-body">An AI-assisted sketch-to-pose and in-betweening pipeline, with no disclosure of how much of the show it touches — a same-day Kotaku piece already flags visible artifacts.</div>
+      <a class="src" href="https://www.cartoonbrew.com/series/disney-jr-animaj-ozzy-youtube-264646.html" target="_blank">cartoonbrew.com ↗</a>
+    </li>
+    <li>
+      <div class="quiet">No confirmed new project work this week from Buck, Instrument, Active Theory, RESN, makemepulse, Fantasy, Dogstudio or Media.Monks.</div>
     </li>
   </ul>
 </section>
@@ -314,16 +347,16 @@
     <h2 class="sec-title">Worth a Deeper Look</h2>
   </div>
   <div class="deeper-item">
-    <h3>Blender's node-based physics</h3>
-    <p>Folding hair and cloth simulation into Geometry Nodes means the same procedural graph used for generative motion work can now also drive physical simulation — collapsing a line that's existed since node systems arrived in DCC tools. Combined with a 2-year LTS window, it's a credible signal that procedural/simulation pipelines will consolidate around node graphs rather than dedicated modifiers.</p>
+    <h3>Lucy 2.5's live, real-time editing</h3>
+    <p>Sub-40ms latency at 1080p/30fps means generative video is no longer just an offline rendering tool — it's fast enough to sit inside a live broadcast or interactive experience. For studios building real-time work, that's a genuinely new material to design with, not just a faster way to make a pre-rendered clip.</p>
   </div>
   <div class="deeper-item">
-    <h3>The makemepulse Codrops feature</h3>
-    <p>It's a rare, granular look at how a top-tier interactive studio organizes cross-disciplinary work — web, XR, installation — around a single narrative asset and in-house engine. Useful less as news and more as a structural model for how a studio like B&amp;B might frame its own multi-platform projects.</p>
+    <h3>Netflix and Disney/Animaj's AI disclosures, both July 17</h3>
+    <p>Both companies moved from experimental claims to disclosed, production-scale AI use with real cost and time figures attached — while staying vague on specifics, which the trade press (Cartoon Brew, Kotaku) is now actively pushing back on. Worth watching as the transparency debate around AI in animation production starts to sharpen.</p>
   </div>
 </section>
 
-<footer>Compiled automatically from web sources published 10–16 July 2026.</footer>
+<footer>Compiled automatically from web sources published 14–20 July 2026.</footer>
 
 </body>
 </html>
